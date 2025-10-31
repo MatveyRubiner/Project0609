@@ -1,24 +1,18 @@
-age = 12
-name = "Боб"
-
-if age >= 12:
-    print("Тебе можно купить спички")
-elif age >= 11:
-    print("Тебе можно купить спички")
-
-else:
-    print(f"{name} cпички запрещено покупать до 12 лет")
+import asyncio
+from aiogram import Bot, Dispatcher
+from handlers import h01_start
+from config import TOKEN
 
 
 
+bot = Bot(token=TOKEN)
 
 
+dp = Dispatcher()
+dp.include_router(h01_start.router)
 
+async def main():
+    await dp.start_polling(bot)
 
-
-
-
-
-
-
-
+if __name__ == "__main__":
+    asyncio.run(main())
