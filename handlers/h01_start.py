@@ -11,7 +11,7 @@ router = Router()
 async def command_start(message: Message):
     """Handler for /start command"""
 
-    photo = FSInputFile("media/apple.jpg")
+    photo = FSInputFile("media/327848-1.jpg")
     await message.answer_photo(
         photo=photo,
         caption=f"Добрый день, <i>{message.from_user.full_name}</i>\nНажмите кнопку ниже,чтобы начать",
