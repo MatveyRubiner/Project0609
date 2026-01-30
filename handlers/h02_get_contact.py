@@ -5,6 +5,7 @@ from keyboards.reply import get_main_menu
 
 router = Router()
 
+
 @router.message(F.contact)
 async def update_info_user(message: Message):
     """Обновление информации о пользователе"""
@@ -13,110 +14,10 @@ async def update_info_user(message: Message):
 
     db_update_user(chat_id, phone)
     if db_create_user_cart(chat_id):
-        await message.answer(text= "Вы успешно зарегистрированы!")
+        await message.answer(text="Вы успешно зарегистрированы!")
     await show_main_menu(message)
+
 
 async def show_main_menu(message: Message):
     """Демонстрация главного меню пользователю"""
-    await message.answer(text= "Сделайте выбор", reply_markup= get_main_menu())
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    await message.answer(text="Сделайте выбор", reply_markup=get_main_menu())
