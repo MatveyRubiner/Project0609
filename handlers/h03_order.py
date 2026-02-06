@@ -38,5 +38,5 @@ async def handle_main_menu(message: Message, bot: Bot):
         await bot.delete_message(chat_id=message.chat.id, message_id=message.message_id)
 
     except TelegramBadRequest:
-        pass
-    await show_main_menu()
+            pass
+    await show_main_menu(message)
