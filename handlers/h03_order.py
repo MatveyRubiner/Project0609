@@ -30,3 +30,13 @@ async def order_history(message: Message):
         line_price = float(order.final_price)
         text += f'{order.product_name} - {order.quantity}шт. - {line_price} ₽\n'
     await message.answer(text)
+
+@router.message(F.text == "Главное меню")
+async def handle_main_menu(message: Message, bot: Bot):
+    "Обработка главного меню и удаление кнопок предыдущих"
+    try:
+        await bot.delete_message(chat_id=message.chat.id, message_id=message.message_id)
+
+    except TelegramBadRequest:
+        pass
+    await show_main_menu()
