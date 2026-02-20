@@ -1,6 +1,8 @@
 from aiogram.types import KeyboardButton
 from aiogram.utils.keyboard import ReplyKeyboardBuilder, ReplyKeyboardMarkup
 
+"""Модуль для формирования кнопок меню. Типа reply"""
+
 
 def start_kb():
     """Start keyboard."""
@@ -29,7 +31,7 @@ def get_main_menu():
 
 
 def back_to_main_menu():
-    """Возврат в главное меню"""
+    """Кнопка возврата в главное меню."""
     builder = ReplyKeyboardBuilder()
     builder.button(text="Главное меню")
     return builder.as_markup(resize_keyboard=True)
