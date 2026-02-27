@@ -81,13 +81,16 @@ def db_get_last_orders(chat_id, limit=5):
 
 
 def db_get_product(category_id):
-    """получение продуктов из категорий."""
+    """получение продуктов по id категорий."""
 
     with get_session() as session:
         query = select(Products).where(Products.category_id == category_id)
         return session.scalars(query).all()
 
+def db_get_product_by_id(product_id):
+    """Получение продукта по id"""
 
-
-
+    with get_session() as session:
+        query = select(Products).where(Products.id == product_id)
+        return session.scalar(query)
 
