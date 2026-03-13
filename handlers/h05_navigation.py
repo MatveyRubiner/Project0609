@@ -4,7 +4,7 @@ from aiogram.types import Message
 
 from handlers.h03_order import make_order
 
-router = Router
+router = Router()
 
 
 @router.message(F.text == "Назад")
