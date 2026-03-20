@@ -1,14 +1,14 @@
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
-from database.utils import db_get_all_category, db_get_finally_price, db_get_product
+from database.utils import db_get_all_categories, db_get_finally_price, db_get_product
 
 """Модуль с функцими для создания inline клавиатур"""
 
 
 def generate_category_menu(chat_id):
     """Инлайн клава с категориями товаров"""
-    categories = db_get_all_category()
+    categories = db_get_all_categories()
     total_price = db_get_finally_price(chat_id)
 
     builder = InlineKeyboardBuilder()
@@ -34,3 +34,15 @@ def show_product_by_category(category_id: int):
         InlineKeyboardButton(text="⬅️ Назад", callback_data='return_to_category')
     )
     return builder.as_markup()
+
+def quantity_cart_controls(quantity = 1):
+    """Кнопка для изменения количества товаров"""
+    builder = InlineKeyboardBuilder()
+    builder.button(text= "➖", callback_data="action -")
+    builder.button(text = str(quantity), callback_data="quantity")
+    builder.button(text="➕", callback_data="action +")
+    builder.button(text="Добавить в корзину", callback_data="Положить в корзину")
+    builder.button(text="🔙Назад",callback_data="from_detail_to_category")
+
+    builder.adjust(3,1,1)
+    return builder.as_markup(resize_keyboard=True)
