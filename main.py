@@ -14,6 +14,7 @@ dp.include_router(h03_order.router)
 dp.include_router(h04_categories.router)
 dp.include_router(h05_navigation.router)
 dp.include_router(h06_product_detail.router)
+dp.include_router(h06_product_detail.router)
 async def main():
     await dp.start_polling(bot)
 
